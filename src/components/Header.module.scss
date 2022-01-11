@@ -1,0 +1,55 @@
+.container {
+  height: 90px;
+  padding: 10px 0;
+  transition: 1s all;
+
+  .wrapper {
+    max-width: 750px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      background-color: gray;
+      border-radius: 4px;
+      padding: 5px 10px;
+      cursor: pointer;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+
+    h3 {
+      color: black;
+      margin-bottom: 15px;
+    }
+
+    .inputs {
+      display: flex;
+      justify-content: space-between;
+
+      .group {
+        display: flex;
+        flex-direction: column;
+
+        label {
+          color: silver;
+        }
+
+        input {
+          outline: none;
+          border: none;
+          background-color: lightgray;
+          padding: 5px;
+          border-radius: 8px;
+          color: black;
+        }
+      }
+    }
+  }
+}

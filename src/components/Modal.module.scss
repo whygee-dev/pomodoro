@@ -1,0 +1,38 @@
+.container {
+  height: 85vh;
+  width: 50vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  inset: 0 0;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  filter: drop-shadow(0 0 0.75rem crimson);
+
+  header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
+
+    h2 {
+      color: black;
+      margin-left: 15px;
+    }
+  }
+
+  .close {
+    font-size: 64px;
+    text-align: right;
+    margin-right: 15px;
+    cursor: pointer;
+
+    &:after {
+      display: inline-block;
+      content: "\00d7";
+      color: black;
+    }
+  }
+}
