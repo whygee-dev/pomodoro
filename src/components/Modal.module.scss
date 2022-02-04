@@ -1,6 +1,6 @@
 .container {
   height: 85vh;
-  width: 50vw;
+  width: 35vw;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -9,6 +9,18 @@
   border-radius: 8px;
   background-color: whitesmoke;
   filter: drop-shadow(0 0 0.75rem crimson);
+
+  @media (max-width: 1024px) {
+    width: 60vw;
+  }
+
+  @media (max-width: 580px) {
+    width: 85vw;
+  }
+
+  @media (max-width: 425px) {
+    width: 95vw;
+  }
 
   header {
     display: flex;

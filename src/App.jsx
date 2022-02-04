@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useRef } from "react";
 import styles from "./App.module.scss";
 import TimerGUI from "./components/TimerGUI";
@@ -5,6 +6,8 @@ import useInterval from "./hooks/useInterval";
 import { convertToMS } from "./tools/time";
 import Layout from "./components/Layout";
 import { useTimerContext } from "./contexts/timers";
+import useSound from "use-sound";
+import uialert from "./audio/uialert.mp3";
 
 const travailDefaultDuration = convertToMS(25, 0);
 const pauseDefaultDuration = convertToMS(5, 0);
@@ -16,13 +19,14 @@ function App() {
   const travailTime = useRef(travailDefaultDuration);
   const pauseTime = useRef(pauseDefaultDuration);
   const timers = useTimerContext();
+  const [play] = useSound(uialert);
 
   useEffect(() => {
     travailTime.current = convertToMS(timers.travailTimer, 0) || travailDefaultDuration;
     pauseTime.current = convertToMS(timers.pauseTimer, 0) || pauseDefaultDuration;
 
     setTimer();
-  }, [timers.travailTimer, timers.pauseTimer]);
+  }, [timers.travailTimer, timers.pauseTimer, timers]);
 
   const setTimer = (phase = currentPhase) => {
     if (phase === "Travail") {
@@ -41,14 +45,16 @@ function App() {
       if (currentTimer <= 0) {
         if (currentPhase === "Travail") {
           setCurrentPhase("Pause");
+          setTimer("Pause");
+          play();
         } else {
           setCurrentPhase("Travail");
+          setTimer("Travail");
+          play();
         }
-
-        setTimer();
       }
     },
-    currentTimer >= 0 && !paused ? 10 : null
+    currentTimer >= 0 && !paused ? 1000 : null
   );
 
   const resetTravail = () => {
@@ -78,6 +84,7 @@ function App() {
             </div>
 
             <TimerGUI timer={currentTimer}></TimerGUI>
+
             <div className={styles.buttons}>
               <button onClick={() => pause(!paused)}>{paused ? "Démarrer" : "Stop"}</button>
               <button onClick={() => (currentPhase === "Travail" ? resetTravail() : resetPause())}>Reset</button>
