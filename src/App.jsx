@@ -87,7 +87,7 @@ function App() {
 
             <div className={styles.buttons}>
               <button onClick={() => pause(!paused)}>{paused ? "Démarrer" : "Stop"}</button>
-              <button onClick={() => (currentPhase === "Travail" ? resetTravail() : resetPause())}>Reset</button>
+              <button onClick={() => (currentPhase === "Travail" ? resetTravail() : resetPause())}>Réinitialiser</button>
             </div>
           </div>
         </div>
